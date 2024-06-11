@@ -8,21 +8,27 @@ import fetchProjects from "./utils/fetchProjects";
 export default function Home() {
   const [projects, setProjects] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const projectsData = await fetchProjects();
-        if (projectsData && projectsData.projects) {
-          setProjects(projectsData.projects);
-        } else {
-          console.error('Error fetching projects: Data structure is incorrect');
-        }
-      } catch (error) {
-        console.error('Error fetching projects:', error);
+  const fetchData = async () => {
+    try {
+      const projectsData = await fetchProjects();
+      if (projectsData && projectsData.projects) {
+        setProjects(projectsData.projects);
+      } else {
+        console.error('Error fetching projects: Data structure is incorrect');
       }
-    };
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    }
+  };
 
-    fetchData();
+  useEffect(() => {
+    fetchData(); // Initial fetch
+
+    const intervalId = setInterval(() => {
+      fetchData(); // Fetch every x milliseconds
+    }, 15000);
+
+    return () => clearInterval(intervalId); // Cleanup on unmount
   }, []);
 
   return (
