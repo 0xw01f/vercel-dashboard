@@ -4,7 +4,7 @@
 const fetchProjects = async () => {
   
   try {
-    const response = await fetch('https://api.vercel.com/v6/projects?teamId=0xw01fs-projects', {
+    const response = await fetch(`https://api.vercel.com/v6/projects?teamId=${process.env.MY_VERCEL_TEAM_ID}`, {
       headers: {
         Authorization: `Bearer ${process.env.MY_VERCEL_API_KEY}`
       }
