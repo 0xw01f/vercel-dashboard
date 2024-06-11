@@ -5,12 +5,16 @@ const ProjectCard = ({ project }) => {
   const { production } = targets;
   const readyState = production?.readyState;
 
-  // Determine the background color based on the readyState
+  // Determine the background color based on the readyState, bg-gradient-to-bl from-sky-800 via-sky-950 to-indigo-950
   let bgColorClass = 'bg-white dark:bg-gray-800';
   if (readyState === 'READY') {
-    bgColorClass = 'bg-green-500';
+    bgColorClass = 'bg-gradient-to-bl from-emerald-900 via-emerald-700 to-emerald-950';
   } else if (readyState === 'ERROR') {
-    bgColorClass = 'bg-red-500';
+    bgColorClass = 'bg-gradient-to-bl from-rose-950 via-rose-900 to-red-950';
+  } else if (readyState === 'BUILDING') {
+    bgColorClass = 'bg-gradient-to-bl from-amber-900 via-orange-800 to-amber-950';
+  } else {
+    bgColorClass = 'bg-gradient-to-bl from-sky-800 via-sky-950 to-indigo-950';
   }
 
   return (

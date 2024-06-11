@@ -44,7 +44,7 @@ export default function Home() {
     </main>
     <footer className="flex items-center justify-center w-full h-24 bg-gradient-to-t from-gray-100 dark:from-black">
       <a
-        href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        href="https://vercel.com/"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center gap-2 p-8"
